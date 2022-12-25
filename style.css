@@ -1,0 +1,38 @@
+.page, .col, .title, .btn {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.page {
+	height: 100vh;
+	display: flex;
+	font-family: 'Roboto', sans-serif;
+}
+.col {
+	flex: 1;
+	background-color: #ccc;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	/* border: 1px solid; */
+}
+.btn {
+	border: none;
+	outline: none;
+	min-width: 55px;
+}
+.title, .btn {	
+	font-size: 1.5rem;
+	border-radius: 35px;
+	padding: 14px;
+	color: #fff;
+	text-shadow: 1px 0 1px #000, 0 1px 1px #000, -1px 0 1px #000, 0 -1px 1px #000;
+	transition: all .3s;
+	background: transparent;
+}
+.title:hover, .btn:hover {
+	background-color: #0000001a;
+	scale: 1.2;
+	cursor: pointer;
+}
