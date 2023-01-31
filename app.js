@@ -18,6 +18,12 @@ const setRandomColors = () => {
 		title.textContent =  color;
 	})
 }
+const lockColor = target => {
+	const node = target.tagName.toLowerCase() === 'i'	? target : target.children[0]
+	node.classList.toggle('fa-lock');
+	node.classList.toggle('fa-lock-open')
+}
+const copyToClickBoard = target => navigator.clipboard.writeText(target.textContent);
 setRandomColors();
 document.addEventListener('keydown', (evt) => {
 	if (evt.code.toLowerCase() === 'space')	{
@@ -25,12 +31,8 @@ document.addEventListener('keydown', (evt) => {
 		setRandomColors();
 	}
 });
-document.addEventListener('click', (evt) => {
-	const type = evt.target.dataset.type;
-	if (type === 'lock') {
-		const node = evt.target.tagName.toLowerCase() === 'i'	? evt.target : evt.target.children[0]
-		node.classList.toggle('fa-lock');
-		node.classList.toggle('fa-lock-open')
-	}
-	if (evt.target.classList.contains('title')) return navigator.clipboard.writeText(evt.target.textContent);
+document.addEventListener('click', ({ target }) => {
+	const type = target.dataset.type;
+	if (type === 'lock') lockColor(target);
+	if (target.classList.contains('title')) copyToClickBoard(target);
 })
